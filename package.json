@@ -1,0 +1,9 @@
+{
+  "name": "i-deserve-to-be-hired",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "repository": "git@github.com:o-p/i-deserve-to-be-hired.git",
+  "author": "Chris Chu <op.github.io@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
