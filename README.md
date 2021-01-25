@@ -1,3 +1,5 @@
+[![jest coverage%](https://jestjs.io/img/jest-badge.svg)](https://o-p.github.io/i-deserve-to-be-hired/)
+
 # Interview question for Node.js
 
 ```js
