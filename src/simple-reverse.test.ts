@@ -7,8 +7,8 @@ describe('簡單版反轉，僅能容忍最簡單的輸入值（輸入值需合�
   test.each`
     input                              | expected
     ${exampleInput}                    | ${exampleOutput}
-    ${{hello: 'world'}}                | ${{world: 'hello'}}
-    ${{one: 'only', two: 'disappear'}} | ${{only: 'one'}}
+    ${{ hello: 'world' }}                | ${{ world: 'hello' }}
+    ${{ one: 'only', two: 'disappear' }} | ${{ only: 'one' }}
   `(
     '$input',
     ({ input, expected }) => expect(reverse(input)).toEqual(expected),

@@ -3,7 +3,7 @@ interface Path {
 }
 
 function reverse(node: Path|string, exists: Path|string = ''): Path {
-  if (typeof node === 'string') {
+  if (!(node instanceof Object)) {
     return { [node]: exists };
   }
 
@@ -12,7 +12,7 @@ function reverse(node: Path|string, exists: Path|string = ''): Path {
   return reverse(
     <Path|string> child,
     exists ? { [key]: exists } : key,
-  )
+  );
 }
 
 export default reverse;
