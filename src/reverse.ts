@@ -1,5 +1,5 @@
-interface Path {
-  [key: string]: Path|string;
+interface Node {
+  [key: string]: Node|string;
 }
 
 type Entry = [key: string, value: string];
@@ -7,7 +7,7 @@ type Entries = Entry[];
 
 type EntriesFilter = (entries: Entries) => Entry|null;
 
-function reverseNodes(node: Path|string, filter: EntriesFilter, exists: Path|string = ''): Path|null {
+function reverseNodes(node: Node|string, filter: EntriesFilter, exists: Node|string = ''): Node|null {
   if (!(node instanceof Object)) {
     return { [node]: exists };
   }
@@ -15,7 +15,7 @@ function reverseNodes(node: Path|string, filter: EntriesFilter, exists: Path|str
   const entries = Object.entries(node);
 
   let key: string;
-  let child: Path|string;
+  let child: Node|string;
   let entry;
 
   switch (entries.length) {
@@ -38,7 +38,7 @@ function reverseNodes(node: Path|string, filter: EntriesFilter, exists: Path|str
   }
 
   return reverseNodes(
-    <Path|string> child,
+    <Node|string> child,
     filter,
     exists ? { [key]: exists } : key,
   );
@@ -48,7 +48,18 @@ function defaultEntriesFilter(entries: Entries): Entry|null {
   return entries[0] ?? null;
 }
 
-function reverse(nodes: Path|null, filter: EntriesFilter = defaultEntriesFilter) {
+/**
+ * 反轉 Nested Object 中每階層的 parent-child nodes
+ *
+ * 如果輸入值不合法，會回傳 null:
+ *   - 輸入值非 Object instance，e.g. null
+ *   - 輸入值最底層為 empty object，e.g. {}
+ *   - 輸入值次一層為 empty object，e.g. { key: {} }
+ *
+ * @param nodes  要進行反轉的 object
+ * @param filter optional，如果 object 中包含多組 key-value pair，會透過此 filter 進行挑選
+ */
+function reverse(nodes: Node, filter: EntriesFilter = defaultEntriesFilter) {
   // 不合規格的 inputs，回 null
   if (!(nodes instanceof Object)) return null;
 
