@@ -1,6 +1,16 @@
-[![jest coverage%](https://jestjs.io/img/jest-badge.svg)](https://o-p.github.io/i-deserve-to-be-hired/)
-
 # Interview question for Node.js
+
+本題選用 TypeScript 實作，開發環境 Node.js v14，測試 framework 選用 Jest，CI 使用 GitHub Actions。
+
+## Links
+
+- [simple-reverse](src/simple-reverse.ts) - 第一版本簡易實作，可處理 happy path，輸入值必須為符合規則之 object，每層均至少包含一組 key-value pair
+
+- [reverse](src/reverse.ts) - 第二版本實作，對於大部分不合法的輸入值統一回傳 null；使用者可自行注入 filter，當 object 中包含多組 key-value pair 時，透過 filter 選擇要轉換的路徑。
+
+- [Coverage Report](https://o-p.github.io/i-deserve-to-be-hired/) - CI 中透過 Jest 產生
+
+## Question
 
 ```js
 /**
