@@ -10,6 +10,20 @@
 
 - [Coverage Report](https://o-p.github.io/i-deserve-to-be-hired/) - CI 中透過 Jest 產生
 
+## Demo
+
+```bash
+$ FOLDER=path/to/go # 要用來下載的資料夾路徑
+$ git clone git@github.com:o-p/i-deserve-to-be-hired.git $FOLDER && cd $FOLDER
+...
+# 安裝相依套件，將 TypeScript source code 轉譯成 JavaScript
+$ yarn && yarn build
+...
+# 測試題目 input，確認 output 是否相符
+$ node -e "const { reverse } = require('./es'); console.log(JSON.stringify(reverse({ hired: { be: { to: { deserve: 'I' } } } })))"
+{"I":{"deserve":{"to":{"be":"hired"}}}}
+```
+
 ## Question
 
 ```js
